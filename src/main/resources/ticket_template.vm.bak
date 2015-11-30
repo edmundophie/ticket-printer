@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticket</title>
+    <style>
+        body{
+            background:none;
+        }
+
+        .container {
+            width:960px;
+            margin:auto;
+        }
+
+        .logo, .logo>img {
+            width:200px;
+        }
+        .logo{
+            margin:auto;
+        }
+        .brand {
+            text-align: center;
+            color:red;
+            margin:0;
+        }
+        .tagline {
+            text-align:center;
+            margin:0;
+        }
+        .clear{clear:both;}
+        .booking-details-label, .passenger-details-label, .itinerary-details-label, .payment-details-label, .notice-label{border-bottom: 1px solid;}
+        #passenger-details-table-header, #itinerary-details-table-header{text-align:left;}
+        .payment-table-right-column{text-align: right;}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="logo">
+        <img src="logo.png" alt="Logo" align="middle">
+        <h1 class="brand required" id="brand" >$brand</h1>
+        <p class="tagline required" id="tagline"><strong>$tagline</strong></p>
+    </div>
+    <div class="clear"></div>
+    <div class="booking-details">
+        <h3 class="booking-details-label">Booking Details</h3>
+        <table width="100%">
+            <tr>
+                <td>Agent Name</td>
+                <td class="required" id="agentName">$agentName</td>
+                <td>Issued Date</td>
+                <td class="required" id="issuedDate">$issuedDate</td>
+            </tr>
+            <tr>
+                <td>Booking Reference</td>
+                <td><strong class="required" id="bookingRef">$bookingRef<strong></td>
+            </tr>
+        </table>
+    </div>
+    <div class="passenger-details">
+        <h3 class="passenger-details-label">Passenger Details</h3>
+        <table width="100%">
+            <tr id="passenger-details-table-header">
+                <th>Name</th>
+                <th>eTicket Number</th>
+            </tr>
+            #foreach($passenger in $passengers)
+            <tr>
+                <td class="looping-required" id="name">$passenger.name</td>
+                <td class="looping-required" id="ticketNumber">$passenger.ticketNumber</td>
+            </tr>
+            #end
+        </table>
+    </div>
+    <div class="itinerary-details">
+        <h3 class="itinerary-details-label">Itinerary Details</h3>
+        <table width="100%">
+            <tr id="itinerary-details-table-header">
+                <th>Date</th>
+                <th>Flight</th>
+                <th>Depart Airport</th>
+                <th>Arrive Airport</th>
+                <th>Depart Time</th>
+                <th>Arrive Time</th>
+                <th>Class</th>
+                <th>Bagg.</th>
+            </tr>
+            #foreach($itinerary in $itineraries)
+            <tr>
+                <td class="looping-required" id="date">$itinerary.date</td>
+                <td class="looping-required" id="flight">$itinerary.flight</td>
+                <td class="looping-required" id="departAirport">$itinerary.departAirport</td>
+                <td class="looping-required" id="arriveAirport">$itinerary.arriveAirport</td>
+                <td class="looping-required" id="departTime">$itinerary.departTime</td>
+                <td class="looping-required" id="arriveTime">$itinerary.arriveTime</td>
+                <td class="looping-required" id="class">$itinerary.class</td>
+                <td class="looping-required" id="baggage">$itinerary.baggage</td>
+            </tr>
+            #end
+        </table>
+    </div>
+    <div class="payment-details">
+        <h3 class="payment-details-label">Payment Details</h3>
+        <table width="100%">
+            <tr>
+                <td class="payment-table-left-column">Nett Fare</td>
+                <td class="payment-table-right-column">IDR <span class="required" id="nettFare">$nettFare</span></td>
+            </tr>
+            <tr>
+                <td class="payment-table-left-column">Taxes</td>
+                <td class="payment-table-right-column">IDR <span class="required" id="taxes">$taxes</span></td>
+            </tr>
+            <tr>
+                <td class="payment-table-left-column">Total</td>
+                <td class="payment-table-right-column"><strong>IDR <span class="required" id="total">$total</span></strong></td>
+            </tr>
+        </table>
+    </div>
+    <div class="notice">
+        <h3 class="notice-label">Notice</h3>
+        <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec id elit non mi porta gravida at eget metus. Vestibulum id ligula porta felis euismod semper. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+
+        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur est at lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis.</p>
+
+        <p>Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+    </div>
+</div>
+
+</body>
+</html>
